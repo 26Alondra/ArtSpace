@@ -41,6 +41,13 @@
                 </li>
                 <li><a class="nav-link" href="#acerca">Acerca de</a></li>
                 <li><a class="nav-link" href="#contacto">Contacto</a></li>
+                <li class="d-flex nav-link text-center">
+                    @using (Html.BeginForm("buscarProd", "Catalogo", FormMethod.Post, new { @class = "buscar" }))
+                    {
+                        <input type="text" placeholder="Nombre producto" required id="nomBuscar" name="nomBuscar" />
+                        <button class="boton btn-danger" type="submit" value="submit"><i class="fas fa-search"></i></button>
+                    }
+                </li>
             </ul>
             @Html.Partial("_LoginPartial", new { @class = "nav-link" })
         </div>
