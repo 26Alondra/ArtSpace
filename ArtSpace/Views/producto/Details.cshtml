@@ -1,0 +1,82 @@
+﻿@model ArtSpace.Models.producto
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutCompras.cshtml";
+}
+
+<h1 style="font-family: 'Segoe UI' ; text-align:center">Detalles Producto</h1>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal" style="font-family: Verdana">
+        <dt>
+            Producto:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            Descripción:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descripcion)
+        </dd>
+
+        <dt>
+            Precio:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.precio)
+        </dd>
+
+        <dt>
+            Ult Actualización:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ult_act)
+        </dd>
+
+        <dt>
+            Imagen:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.imagen)
+        </dd>
+
+        <dt>
+            Existencia:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.existencia)
+        </dd>
+
+        <dt>
+            Stock:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.stock)
+        </dd>
+
+        <dt>
+            Subcategoría:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.subcategoria.nombre)
+        </dd>
+
+    </dl>
+</div>
+<p style="font-family: Verdana">
+    @Html.ActionLink("Editar", "Edit", new { id = Model.id_producto }) |
+    @Html.ActionLink("Regresar", "Index")
+</p>

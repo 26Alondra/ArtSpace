@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@{
+    DateTime dia = DateTime.Now;
+    var hora = dia.Hour;
+    string mensaje = "";
+    if (hora < 12)
+    {
+        mensaje = "Buenos días";
+    }
+    if ((hora >= 12) && (hora < 19))
+    {
+        mensaje = "Buenas tardes";
+    }
+    if (hora >= 19)
+    {
+        mensaje = "Buenas noches";
+    }
+
+    string name = Session["usr"].ToString();
+}
+
+<h1 style="font-family: 'Segoe UI' ; text-align:center">Administración</h1>
+
+<h3 style="font-family:'Segoe UI'">@mensaje @name</h3>
+
+<div class="container">
+
+    <div class="row" style="font-family:'Segoe UI'">
+        <div class="col-md-4">
+            <h4>Equipo ArtSpace</h4>
+            <br />
+            <img src="~/resources/logo.png" class="mx-auto d-block" style="width:200px">
+        </div>
+        <div class="col-md-4">
+            <h4>Empleados</h4>
+            <br />
+            <img src="~/resources/empleado.jpg" class="mx-auto d-block" style="width:300px">
+        </div>
+    </div>
+
+</div>
+
+

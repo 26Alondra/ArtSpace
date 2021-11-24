@@ -1,0 +1,47 @@
+﻿@model ArtSpace.Models.categoria
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutCompras.cshtml";
+}
+
+<h1 style="font-family: 'Segoe UI' ; text-align:center">Editar Categoría</h1>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.id_categoria)
+
+        <dl class="dl-horizontal">
+            <dt style="font-family: Verdana">
+                Nombre Categoría:
+            </dt>
+
+            <dd style="font-family: Verdana">
+                @Html.DisplayFor(model => model.nombre)
+            </dd>
+        </dl>
+
+            <div class="form-group">
+                <label class="control-label col-md-2" style="font-family: Verdana">Descripción: </label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.descripcion, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.descripcion, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" style="font-family: Verdana" value="Guardar" class="btn btn-default" />
+                </div>
+            </div>
+</div>
+}
+
+<div style="font-family: Verdana">
+    @Html.ActionLink("Regresar", "Index")
+</div>

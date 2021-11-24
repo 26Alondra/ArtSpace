@@ -1,0 +1,50 @@
+﻿@model ArtSpace.Models.empleado
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1 style="font-family: 'Segoe UI' ; text-align:center">Detalles Empleado</h1>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal" style="font-family: Verdana">
+        <dt>
+            Nombre Completo:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            Correo Electrónico:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            Rol: 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rol)
+        </dd>
+
+        <dt>
+            Departamento:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.departamento)
+        </dd>
+
+    </dl>
+</div>
+<p style="font-family: Verdana">
+    @Html.ActionLink("Editar", "Edit", new { id = Model.id_empleado }) |
+    @Html.ActionLink("Regresar", "Index")
+</p>
