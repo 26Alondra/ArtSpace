@@ -1,0 +1,42 @@
+﻿@model ArtSpace.Models.subcategoria
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutCompras.cshtml";
+}
+
+<h1 style="font-family: 'Segoe UI' ; text-align:center">Detalles Subcategoría</h1>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal" style="font-family: Verdana">
+        <dt>
+            Subcategoría:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            Descripción:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descripcion)
+        </dd>
+
+        <dt>
+            Categoría:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.categoria.nombre)
+        </dd>
+
+    </dl>
+</div>
+<p style="font-family: Verdana">
+    @Html.ActionLink("Editar", "Edit", new { id = Model.id_subcategoria }) |
+    @Html.ActionLink("Regresar", "Index")
+</p>

@@ -1,0 +1,49 @@
+﻿@model ArtSpace.Models.subcategoria
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutCompras.cshtml";
+}
+
+<h1 style="font-family: 'Segoe UI' ; text-align:center">Eliminar Subcategoría</h1>
+<br />
+<h4 style="font-family: Verdana">¿Esta seguro de eliminar esta subcategoría?</h4>
+<div>
+    <hr />
+    <dl class="dl-horizontal" style="font-family: Verdana">
+        <dt>
+            Subcategoría:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            Descripción:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descripcion)
+        </dd>
+
+        <dt>
+            Categoria:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.categoria.nombre)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color" style="font-family: Verdana">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Regresar", "Index")
+        </div>
+    }
+</div>

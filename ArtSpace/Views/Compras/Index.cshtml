@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutCompras.cshtml";
+}
+@{
+    DateTime dia = DateTime.Now;
+    var hora = dia.Hour;
+    string mensaje = "";
+    if (hora < 12)
+    {
+        mensaje = "Buenos días";
+    }
+    if ((hora >= 12) && (hora < 19))
+    {
+        mensaje = "Buenas tardes";
+    }
+    if (hora >= 19)
+    {
+        mensaje = "Buenas noches";
+    }
+
+    string name = Session["usr"].ToString();
+}
+
+<h1 style="font-family: 'Segoe UI' ; text-align:center">Compras</h1>
+
+<h3 style="font-family:'Segoe UI'">@mensaje @name</h3>
+<br />
+
+<div class="container">
+
+    <div class="row" style="font-family:'Segoe UI'">
+        <div class="col-md-4">
+            <h4>Categorias</h4>
+            <br />
+            <img src="~/resources/sub.jpg" class="mx-auto d-block" style="width:200px">
+        </div>
+        <div class="col-md-4">
+            <h4>Subcategorias</h4>
+            <br />
+            <img src="~/resources/categorias.jpg" class="mx-auto d-block" style="width:200px">
+        </div>
+        <div class="col-md-4">
+            <h4>Productos</h4>
+            <br />
+            <img src="~/resources/producto.jpg" class="mx-auto d-block" style="width:200px">
+        </div>
+    </div>
+
+</div>

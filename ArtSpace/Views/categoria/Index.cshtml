@@ -1,0 +1,40 @@
+﻿@model IEnumerable<ArtSpace.Models.categoria>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutCompras.cshtml";
+}
+
+<h1 style="font-family: 'Segoe UI' ; text-align:center">Lista de Categorías</h1>
+
+<p style="font-family: 'Segoe UI'">
+    @Html.ActionLink("Nueva Categoría", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th style="font-family: 'Segoe UI'">
+            Categoría
+        </th>
+        <th style="font-family: 'Segoe UI'">
+            Descripción
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td style="font-family: 'Segoe UI'">
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>
+        <td style="font-family: 'Segoe UI'">
+            @Html.DisplayFor(modelItem => item.descripcion)
+        </td>
+        <td style="font-family: 'Segoe UI'">
+            @Html.ActionLink("Editar", "Edit", new { id=item.id_categoria }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.id_categoria }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.id_categoria })
+        </td>
+    </tr>
+}
+
+</table>

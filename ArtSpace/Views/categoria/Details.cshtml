@@ -1,0 +1,33 @@
+﻿@model ArtSpace.Models.categoria
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutCompras.cshtml";
+}
+
+<h1 style="font-family: 'Segoe UI' ; text-align:center">Detalles Categoría</h1>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt style="font-family: Verdana">
+            Nombre Categoría:
+        </dt>
+
+        <dd style="font-family: Verdana">
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt style="font-family: Verdana">
+            Descripción:
+        </dt>
+
+        <dd style="font-family: Verdana">
+            @Html.DisplayFor(model => model.descripcion)
+        </dd>
+
+    </dl>
+</div>
+<p style="font-family: Verdana">
+    @Html.ActionLink("Editar", "Edit", new { id = Model.id_categoria }) |
+    @Html.ActionLink("Regresar", "Index")
+</p>
