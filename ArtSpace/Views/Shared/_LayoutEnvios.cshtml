@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+        @Html.ActionLink("ArtSpace", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        <!-- Toggler/collapsibe Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav mr-auto">
+                <li>@Html.ActionLink("Almacén", "Index", "Envios", new { area = "" }, new { @class = "nav-link" })</li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+                        Paqueterías
+                    </a>
+                    <div class="dropdown-menu">
+                        @Html.ActionLink("Ver", "Index", "Paqueteria", new { area = "" }, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Agregar", "Create", "Paqueteria", new { area = "" }, new { @class = "dropdown-item" })
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+                        Órdenes pendientes
+                    </a>
+                    <div class="dropdown-menu">
+                        @Html.ActionLink("Sin fecha de envío", "Index", "Orden", new { area = "" }, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Sin fecha de entrega", "Index2", "Orden", new { area = "" }, new { @class = "dropdown-item" })
+                    </div>
+                </li>
+            </ul>
+            @Html.Partial("_LoginPartial")
+        </div>
+    </nav>
+    <div class="body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <center>
+                <div class="row">
+                    <div class="col-4">
+                        <p><i class="fa fa-phone"> </i> 722 134 45 67</p>
+                    </div>
+                    <div class="col-4">
+                        <p><i class="fa fa-address-card"></i> Avenida Tecnológico 100 s/n. Colonia Agrícola, Bellavista, La Virgen, 52149 Metepec, Méx.</p>
+                    </div>
+                    <div class="col-4">
+                        <p><i class="fa fa-envelope"> </i> art-space@art-space.com</p>
+                    </div>
+                </div>
+                <p><b>&copy;2021 - ArtSpace</b></p>
+            </center>
+
+        </footer>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
