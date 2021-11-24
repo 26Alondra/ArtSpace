@@ -1,0 +1,34 @@
+﻿@using Tienda1.Models;
+@{
+    ViewBag.Title = "Agregar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<h2>Agregar cometario</h2>
+
+
+@{ if (Session["mIdP"] != null)
+    {
+
+        <div style="">
+            <h4>Producto+ @Session["nombre"]</h4>
+        </div>
+        <div class="form-group">
+            <label for="comment">Commentario:</label>
+            <textarea class="form-control" rows="5" name="comenta" id="comment"  value="" required></textarea>
+        </div>
+        <div>
+            <a class="btn btn-warning" href="@Url.Action("Añadir", "Comentarios", new { idP = Session["mIdP"] })">Agregar</a>
+        </div>
+    }
+    else
+    {
+        <tr>
+            <td align="center" colspan="7"><h2 style="color:saddlebrown"> Producto no encontrado</h2>
+
+        </tr>
+    }
+}
+
+

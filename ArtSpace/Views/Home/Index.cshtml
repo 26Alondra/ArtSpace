@@ -1,158 +1,75 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+<div id="demo" class="carousel slide" data-ride="carousel">
 
-    <div id="demo" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ul class="carousel-indicators">
+        <li data-target="#demo" data-slide-to="0" class="active"></li>
+        <li data-target="#demo" data-slide-to="1"></li>
+        <li data-target="#demo" data-slide-to="2"></li>
+    </ul>
 
-        <!-- Indicators -->
-        <ul class="carousel-indicators">
-            <li data-target="#demo" data-slide-to="0" class="active"></li>
-            <li data-target="#demo" data-slide-to="1"></li>
-            <li data-target="#demo" data-slide-to="2"></li>
-        </ul>
-
-        <!-- The slideshow -->
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="~/resources/escultura2.jpg" class="img-fluid" />
-            </div>
-            <div class="carousel-item">
-                <img src="~/resources/escultura3.jpg" class="img-fluid" />
-            </div>
-            <div class="carousel-item">
-                <img src="~/resources/escultura1.png" class="img-fluid" />
-            </div>
+    <!-- The slideshow -->
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="~/Content/Images/resource/escultura2.jpg" class="img-fluid" height="400" style="position:inherit; text-align:right" />
         </div>
 
-        <!-- Left and right controls -->
-        <a class="carousel-control-prev" href="#demo" data-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-        </a>
-        <a class="carousel-control-next" href="#demo" data-slide="next">
-            <span class="carousel-control-next-icon"></span>
-        </a>
     </div>
-    <br />
-    <br />
-    <br />
-    <br />
+
+    <!-- Left and right controls -->
+    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#demo" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </a>
+</div>
+<br />
+<br />
+<br />
+<br />
 <h2 class="text-center">Nuestas esculturas más vendidas</h2>
-    <div class="container">
-        <div class="container-fluid">
-            <div class="card-deck">
-                <div class="card m-3">
-                    <div class="card-body">
-                        <img class="card-img-top" src="~/resources/fox.jpg" />
-                        <h5 class="card-title text-center">World Fox 3D</h5>
-                        <h6 class="card-subtitle mb-2 text-muted text-center">Madera</h6>
-                        <p class="card-text text-center">Precio:$350.00</p>
-                        <div class="card-footer text-center">
-                            <a href="#" class="btn btn-danger btn-primary">Comprar ahora</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="card m-3">
-                    <div class="card-body">
-                        <img class="card-img-top" src="~/resources/Tsamaikitajpg.jpg" />
-                        <h5 class="card-title text-center">Escultura Arte Huichol - Tsamaikita</h5>
-                        <h6 class="card-subtitle mb-2 text-muted text-center">Madera</h6>
-                        <p class="card-text text-center"><del class="text-danger">Antes:$900</del></p>
-                        <p class="card-text text-center">Ahora:$550.00</p>
-                        <div class="card-footer text-center">
-                            <a href="#" class="btn btn-danger btn-primary">Comprar ahora</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="card m-3">
-                    <div class="card-body">
-                        <img class="card-img-top" src="~/resources/dog.jpg" />
-                        <h5 class="card-title text-center">Balloon Dog</h5>
-                        <h6 class="card-subtitle mb-2 text-muted text-center">Metal</h6>
-                        <p class="card-text text-center">Precio:$809.99</p>
-                        <div class="card-footer text-center">
-                            <a href="#" class="btn btn-danger btn-primary">Comprar ahora</a>
-                        </div>
+<div class="container" style="position:center; text-align:center">
+    <div class="container-fluid">
+        <div class="card-deck">
+            <div class="card m-3" >
+                <div class="card-body">
+                    <img class="card-img-top" src="~/Content/Images/resource/escultura1.png" width="300" style="text-align:center"/>
+                    <h5 class="card-title text-center">World Fox 3D</h5>
+                    <h6 class="card-subtitle mb-2 text-muted text-center">Madera</h6>
+                    <p class="card-text text-center">Precio:$350.00</p>
+                    <div class="card-footer text-center">
+                        <a href="#" class="btn btn-danger btn-primary">Comprar ahora</a>
                     </div>
                 </div>
             </div>
-        </div>
-        <br />
-        <br />
-        <br />
-        <br />
-        <div class="row">
-            <div class="col-sm">
-                <h3 class="font-italic">Más que una escultura.</h3>
-                <br />
-                <p class="text-justify font-italic">
-                    La escultura no es una ciencia sino un arte totalmente mecánico, que provoca sudor y fatiga corporal en su realizador…
-                    lo cubre de polvo y de escombros y le deja el rostro pastoso y enharinado de polvo de mármol como un molinero.
-                    Salpicado de esquirlas, parece cubierto de copos de nieve, y su habitación está sucia y repleta de escombros y del polvo
-                    de la piedra.
-                    <br />
-                    <br />
-                </p>
-                <p class="text-lg-left">- Leonardo da Vinci</p>
+            <div class="card m-3">
+                <div class="card-body">
+                    <img class="card-img-top" src="~/Content/Images/resource/escultura3.jpg" width="300" style="text-align:center" />
+                    <h5 class="card-title text-center">Escultura Arte Huichol - Tsamaikita</h5>
+                    <h6 class="card-subtitle mb-2 text-muted text-center">Madera</h6>
+                    <p class="card-text text-center"><del class="text-danger">Antes:$900</del></p>
+                    <p class="card-text text-center">Ahora:$550.00</p>
+                    <div class="card-footer text-center">
+                        <a href="#" class="btn btn-danger btn-primary">Comprar ahora</a>
+                    </div>
+                </div>
             </div>
-            <div class="col-sm">
-                <img src="~/resources/leo.png" class="img-fluid rounded mx-auto d-block" />
-            </div>
-        </div>
-        <br />
-        <br />
-        <br />
-        <br />
-        <div class="row">
-            <div class="col-sm">
-                <img src="~/resources/about.jpg" class="img-fluid rounded mx-auto d-block" />
-            </div>
-            <div class="col-sm">
-                <h3>¿Quiénes somos?</h3>
-                <br />
-                <p>
-                    ArtSpace es una tienda online donde puedes comprar esculturas originales.
-                    Nuestro objetivo es hacer el arte accesible a todo el mundo y ofrecer una rigurosa selección de artículos de calidad.
-                </p>
-            </div>
-        </div>
-        <br />
-        <br />
-        <br />
-        <br />
-        <div class="row">
-            <div class="col-sm-6">
-                <h3>Ponte en contacto con nosotros:</h3>
-                <br />
-                <table class="table table-borderless">
-                    <tbody>
-                        <tr>
-                            <td>
-                                <div style="text-align:left; font-family:'Times New Roman'">
-                                    <div class="form-group">
-                                        <label for="usr" class="font-weight-normal">Nombre:</label>
-                                        <input type="text" class="form-control" id="usr">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="phone" class="font-weight-normal">Teléfono:</label>
-                                        <input type="number" class="form-control" id="pwd">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="email" class="font-weight-normal">Correo:</label>
-                                        <input type="email" class="form-control" id="pwd">
-                                    </div>
-                                    <div class="form-group font-weight-normal">
-                                        <label for="comment">Comentario:</label>
-                                        <textarea class="form-control" rows="5" id="comment"></textarea>
-                                    </div>
-                                    <button type="button" class="btn btn-outline-dark">Enviar</button>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="col-sm-6 mx-auto">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15066.300273461913!2d-99.5777927!3d19.2573425!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x50062df6247fdfb3!2sInstituto%20Tecnol%C3%B3gico%20de%20Toluca!5e0!3m2!1ses!2smx!4v1633763700189!5m2!1ses!2smx" width="506" height="506" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <div class="card m-3">
+                <div class="card-body">
+                    <img class="card-img-top" src="~/Content/Images/resource/escultura4.jpg" width="300" style="text-align:center" />
+                    <h5 class="card-title text-center">Balloon Dog</h5>
+                    <h6 class="card-subtitle mb-2 text-muted text-center">Metal</h6>
+                    <p class="card-text text-center">Precio:$809.99</p>
+                    <div class="card-footer text-center">
+                        <a href="#" class="btn btn-danger btn-primary">Comprar ahora</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+</div> 
+    
+  

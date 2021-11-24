@@ -1,0 +1,43 @@
+﻿@using Tienda1.Models;
+@{
+    ViewBag.Title = "pagandoPaypal";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int idClient = Convert.ToInt32(Session["idCient"].ToString());
+    int idDir = Convert.ToInt32(Session["idDir"].ToString());
+    string nombre = Session["usr"].ToString();
+    List<Item> cart = (List<Item>)Session["cart"];
+    var total = cart.Sum(item => item.Product.precio * item.Cantidad);
+}
+
+<div class="container" style="margin:2rem auto">
+
+
+
+    <div>
+        <img src="~/Content/Images/tarj/paypal.png"/>
+    </div>
+
+    <main>
+        <p style="font-family:'Leelawadee UI', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif">
+            <b>Bienvenido @nombre </b>
+        </p>
+        <table class="table-striped table-bordered">
+            <caption>Acepta el pago de</caption>
+            <tr>
+                <td colspan="2" style="height:50px;padding:15px;">
+                    <b style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
+                        ArtSpace, Tienda de escultura
+                    </b>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="height:50px;padding:15px;">Importe: </td>
+                <td style="height:25px;padding:15px;"><b>@total MX</b></td>
+            </tr>
+        </table>
+    </main>
+    <div style="margin:auto">
+        <a class="btn btn-info text-center" style="text-decoration:none" href=@Url.Action("pagoAceptado", "Pago", new { idC = idClient, idD = idDir})>Pagar</a>
+        <a class="btn btn-info text-center" style="text-decoration:none" href=@Url.Action("pagoNoAceptado","Pago")>Cancelar</a>
+    </div>
+</div>

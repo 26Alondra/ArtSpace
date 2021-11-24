@@ -1,0 +1,60 @@
+﻿@using Tienda1.Models;
+@{
+    ViewBag.Title = "VerMas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<h2 style="text-align:center; color:green">Pedido</h2>
+
+<table class="table table-bordered table-responsive table-striped" style="background-color:cornflowerblue">
+    @if (Session["idOrd"] != null)
+    {
+        <thead>
+            <tr class="info">
+                <th style="text-align:center"><img src="~/Content/Images/Productos/@Session["Oprodu"]" /></th>
+        </thead>
+        foreach (Orden item in (List<Orden>)Session["ord"])
+        {
+            <tr>
+
+
+                <td>@Session["dir"]</td>
+                <td>@Session["OPaq"]</td>
+
+                <td>@item.fecha_creacion</td>
+                <td>@item.fecha_entrega</td>
+
+                <td>@item.num_guia</td>
+                <td>@item.fecha_envio</td>
+
+            </tr>
+            <tr>
+
+
+                <td>@item.estatus</td>
+                <td>@item.num_confirmacion</td>
+
+                <td>@item.num_guia</td>
+                <td>@item.Total</td>
+                <td>@Session["can"]</td>
+
+            </tr>
+        }
+
+        <tr>
+            <td>
+                <a class="btn" style="background-color:orange" href="@Url.Action("Mostrar", "Comentarios")">Regresar</a>
+            </td>
+            </tr>
+
+
+    }
+    else
+    {
+        <tr>
+        <td > Lo sentimos el pedido no fue encontrado</td >
+        </tr >
+    }
+</table>
+

@@ -1,0 +1,49 @@
+﻿@using Tienda1.Models;
+@{
+    ViewBag.Title = "Mostrar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="color:black; text-align:center">Comentarios</h2>
+
+<table class="table table-bordered table-responsive table-striped" style="background-color:violet">
+
+    @{ if (Session["misComentarios"] != null)
+        {
+            foreach (Comentarios com in (List<Comentarios>)Session["misComentarios"])
+            {
+                int co = com.id_producto;
+                contextTienda db = new contextTienda();
+                string produ = (from p in db.producto
+                                where p.Id_producto == co
+                                select p.nombre).ToList().FirstOrDefault();
+                <tr>
+                    <td>Producto: @produ</td>
+                    <td>Comentario: @com.comentario</td>
+                    <td>
+                        <a class="btn" style="background-color:orange" href="@Url.Action("Actualizar", "Comentarios", new { id =com.Id_comentario})">Actualizar</a>
+                    </td>
+                </tr>
+
+            }
+
+        }
+        else
+        {
+            <tr>
+                <td align="center" colspan="7">
+                    <h2 style="color:saddlebrown">Aún no has agregado ningún comentario</h2>
+                    <br /><h2 style="color:saddlebrown">Ingresa al historial de pedidos para añadir comentarios</h2>
+                </td>
+            </tr>
+        }
+    }
+            <tr>
+                <td align="right" colspan="6">
+                    <a class="btn btn-success" href="@Url.Action("Index", "Home")">Regresar</a>
+                </td>
+                <td>
+</table>
+
+
+

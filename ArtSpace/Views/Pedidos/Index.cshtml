@@ -1,0 +1,51 @@
+﻿@using Tienda1.Models;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Historial de pedidos</h2>
+<table class="table table-bordered table-responsive table-striped" style="background-color:lightseagreen">
+
+    @{ if(Session["misPedidos"] != null)
+        {
+            foreach(PedidoCliente pedido in (List<PedidoCliente>)Session["misPedidos"])
+            {
+                int idOrd = pedido.orden.Id_orden;
+                <tr>
+                    <td>Fecha: @pedido.Fecha</td>
+                    <td>Envío: @pedido.envio</td>
+                    <td>Entrega: @pedido.status</td>
+                </tr>
+
+                foreach(ItemPedido item in (List<ItemPedido>)Session["Pedido"])
+                {
+                    if (item.idOrd == idOrd)
+                    {
+                <tr>
+                    <td>@item.Product.nombre</td>
+                    <td><img class="img-responsive" src="~/Content/Images/productos/@item.Product.imagen" width="100" /></td>
+                    <td>@item.Product.precio</td>
+                    <td>@item.Cantidad</td>
+                    <td>@(item.Product.precio * item.Cantidad)</td>
+                    <td><a class="btn btn-success" href="@Url.Action("VerMas", "Pedidos", new { idP= idOrd})">Ver pedido + @pedido.estatus</a></td>
+                    @{ if (@pedido.status == "Finalizada")
+                        {
+                            <td><a class="btn btn-warning" href="@Url.Action("Agregar", "Comentarios", new { idP= item.Product.Id_producto })">Comentar</a></td>
+                        }
+                    }
+                </tr>
+                    }
+                }
+                <tr>
+                    <td align="right" colspan="4">Total</td>
+                    <td>
+                        @pedido.Total
+                    </td>
+                </tr>
+            }
+        }
+    }
+</table>
+<br />
+<a class="btn btn-warning" href="@Url.Action("Index","Home")">Regresar a la tienda</a>

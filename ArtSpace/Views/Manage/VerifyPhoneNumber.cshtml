@@ -1,6 +1,6 @@
-﻿@model ArtSpace.Models.VerifyPhoneNumberViewModel
+﻿@model Tienda1.Models.VerifyPhoneNumberViewModel
 @{
-    ViewBag.Title = "Comprobar número de teléfono";
+    ViewBag.Title = "Verificar número de teléfono";
 }
 
 <h2>@ViewBag.Title.</h2>
@@ -9,7 +9,7 @@
 {
     @Html.AntiForgeryToken()
     @Html.Hidden("phoneNumber", @Model.PhoneNumber)
-    <h4>Escribir el código de verificación</h4>
+    <h4>Introduzca el código de verificación</h4>
     <h5>@ViewBag.Status</h5>
     <hr />
     @Html.ValidationSummary("", new { @class = "text-danger" })

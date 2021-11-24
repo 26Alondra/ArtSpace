@@ -6,9 +6,9 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using ArtSpace.Models;
+using Tienda1.Models;
 
-namespace ArtSpace.Controllers
+namespace Tienda1.Controllers
 {
     [Authorize]
     public class ManageController : Controller
@@ -333,7 +333,7 @@ namespace ArtSpace.Controllers
             base.Dispose(disposing);
         }
 
-#region Aplicaciones auxiliares
+#region Asistentes
         // Se usan para protección XSRF al agregar inicios de sesión externos
         private const string XsrfKey = "XsrfId";
 

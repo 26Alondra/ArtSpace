@@ -1,26 +1,63 @@
-﻿@using Microsoft.AspNet.Identity
+﻿@using Tienda1.Models;
+@{ 
+    string num = Session["itemTotal"].ToString();
+}
+@using Microsoft.AspNet.Identity
 @if (Request.IsAuthenticated)
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
     @Html.AntiForgeryToken()
+        string name = Session["name"].ToString();
 
-    <ul class="nav navbar-nav navbar-right">
-        <li>
-            @Html.ActionLink("Hola " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-        </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a></li>
-    </ul>
+<ul class="nav navbar-nav navbar-right">
+    <li>
+
+        <a class="btn" href="@Url.Action("Index", "Carro")">
+            <img style="color:red" src="~/Content/images/carrito.png" width="40" class="img-thumbnail">
+
+            <i class="fade fa-shopping-cart" style="font-size:24px; color:lightgoldenrodyellow"></i>
+            <span class="badge" style="color:lightgoldenrodyellow">@num</span>
+        </a>
+    </li>
+    <li>
+        @{
+
+            contextTienda db = new contextTienda();
+            string correo = User.Identity.Name;
+            cliente cl = (from c in db.cliente
+                          where c.email == correo
+                          select c).ToList().FirstOrDefault();
+            int id = cl.Id_cliente;
+        }
+        @*Html.ActionLink("Hola " + name + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })*@
+        <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">Hola @name <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+            <li> <a class="btn btn-success" href="@Url.Action("Index", "Pedidos", null)"> Mis pedidos  </a></li>
+            <li> <a class="btn " style="background-color:deepskyblue" href="@Url.Action("Mostrar", "Comentarios", null)">Mis comentarios</a></li>
+            <li><a class="btn btn-warning" href="@Url.Action("Edit", "clientes", new { id =id})"> Mi información </a></li>
+
+        </ul>
+    </li>
+    <li><a href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a></li>
+    <li>
+</ul>
     }
 }
 else
 {
-<ul class="navbar-nav ml-auto justify-content-center">
-    <li>@Html.ActionLink("Registrarse", "Register", "Account", new { id = "registerLink" }, new { @class = "nav-link" })</li>
-    <li>@Html.ActionLink("Iniciar sesión", "Login", "Account", new { id = "loginLink" }, new { @class = "nav-link" })</li>
-    <li class="d-flex justify-content-center">
-        <img src="~/resources/search.png" />
-        <img src="~/resources/buy.png" />
+<ul class="nav navbar-nav navbar-right">
+    <li>
 
+        <a class="btn" href="@Url.Action("Index", "Carro")">
+            <img style="color:red" src="~/Content/images/carrito.png" width="40" class="img-thumbnail">
+
+            <i class="fade fa-shopping-cart" style="font-size:24px; color:lightgoldenrodyellow"></i>
+            <span class="badge" style="color:lightgoldenrodyellow">@num</span>
+        </a>
+    </li>
+
+    <li>@Html.ActionLink("Registrarse", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+    <li>@Html.ActionLink("Iniciar sesión", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
 </ul>
 }

@@ -1,0 +1,56 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+    @Html.AntiForgeryToken()
+        string name = Session["name"].ToString();
+<ul class="nav navbar-nav navbar-right">
+    <li>
+        @Html.ActionLink("Hola " + name + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+    </li>
+    <li><a href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a></li>
+    <li>
+        <table>
+            <tr>
+                <td>
+                    <img src="~/Content/images/buscar.png" width="40" class="img-thumbnail">
+                </td>
+                <td><br /></td>
+                <td>
+                    <a href="@Url.Action("Ver", "Carro")">
+                        <img style="color:red" src="~/Content/images/carrito.png" width="40" class="img-thumbnail">
+                    </a>
+
+
+                </td>
+            </tr>
+        </table>
+    </li>
+</ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Registrarse", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Iniciar sesión", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        <li>
+            <table>
+                <tr>
+                    <td>
+                        <img src="~/Content/images/buscar.png" width="40" class="img-thumbnail">
+                    </td>
+                    <td><br /></td>
+                    <td>
+                        <a href="@Url.Action("Ver", "Carro")">
+                            <img style="color:red" src="~/Content/images/carrito.png" width="40" class="img-thumbnail">
+                        </a>
+                        
+                        
+                    </td>
+                </tr>
+            </table>
+        </li>
+    </ul>
+}

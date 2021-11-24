@@ -1,0 +1,78 @@
+﻿@using Tienda1.Models;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Carro de compra</h2>
+
+
+<table class="table table-bordered table-responsive table-striped">
+    <thead>
+        <tr class="info">
+            <th>Opción</th>
+            <th>Nombre</th>
+            <th style="text-align:center">Foto</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>SubTotal</th>
+        </tr>
+    </thead>
+    @{
+        List<Item> list = (List<Item>)Session["cart"];
+
+        if (!list.Any() )
+        {
+            <tr>
+                <td align="center" colspan="7"><h2>Aún no has agregado ningún producto</h2></td>
+            </tr>
+        }
+        else
+        {
+
+            foreach (Item item in (List<Item>)Session["cart"])
+            { 
+                <tr>
+                    <td> <a href="@Url.Action("Quitar", "Carrito", new { id = item.Product.Id_producto })">Quitar</a></td>
+
+                    <td>@item.Product.nombre</td>
+                    <td><img class="img-responsive" src="~/Content/Images/productos/product" /></td>
+
+                    <td>@item.Product.precio</td>
+                    <td>@item.Cantidad</td>
+                    <td>@(item.Product.precio * item.Cantidad)</td>
+                </tr>
+            }
+        }
+    }
+
+    <tr>
+        <td align="right" colspan="6">Total</td>
+
+        <td>
+            @{
+                List<Item> cart = (List<Item>)Session["cart"];
+                var total = cart.Sum(item => item.Product.precio * item.Cantidad);
+            }
+            @total
+        </td>
+    </tr>
+</table>
+
+<br>
+
+@{
+    if (!list.Any())
+    {
+        <p style="color:white;">
+            @Html.ActionLink("Continuar comprando", null, null, null, new { href = Request.UrlReferrer, @class = "btn btn-lg btn-info" })
+        </p>
+    }
+    else
+    {
+
+        <a class="btn btn-warning" href="@Url.Action("Index", "Home")">Continuar comprando</a>
+        <p style="float:right;color:white">
+            @Html.ActionLink("Confirmar Orden", "CrearOrden", "Checkout", new { area = "" }, new { @class = "btn btn.success" })
+        </p>
+    }
+}

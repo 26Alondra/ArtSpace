@@ -1,4 +1,4 @@
-﻿@model ArtSpace.Models.ExternalLoginConfirmationViewModel
+﻿@model Tienda1.Models.ExternalLoginConfirmationViewModel
 @{
     ViewBag.Title = "Registrarse";
 }
@@ -13,7 +13,7 @@
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <p class="text-info">
-        Se ha autenticado correctamente con <strong>@ViewBag.LoginProvider</strong>.
+        Se autenticó correctamente con <strong>@ViewBag.LoginProvider</strong>.
         Introduzca un nombre de usuario para este sitio y haga clic en el botón Registrar para finalizar
         el inicio de sesión.
     </p>

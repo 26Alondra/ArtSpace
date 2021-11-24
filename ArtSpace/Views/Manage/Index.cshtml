@@ -1,6 +1,6 @@
-﻿@model ArtSpace.Models.IndexViewModel
+﻿@model Tienda1.Models.IndexViewModel
 @{
-    ViewBag.Title = "Administrar";
+    ViewBag.Title = "Gestionar";
 }
 
 <h2>@ViewBag.Title.</h2>
@@ -34,7 +34,7 @@
              Consulte <a href="https://go.microsoft.com/fwlink/?LinkId=403804">este artículo</a>
                 para obtener detalles sobre cómo configurar esta aplicación ASP.NET para que sea compatible con la autenticación en dos fases mediante SMS.
              
-             Quite la marca de comentario del bloque siguiente después de configurar la autenticación en dos fases
+             Quite la marca de comentario de los bloques siguientes después de configurar la autenticación en dos fases.
         *@
         @*  
             <dt>Número de teléfono:</dt>
@@ -77,7 +77,7 @@
                     using (Html.BeginForm("EnableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                     {
                         @Html.AntiForgeryToken()
-                        <text>Deshabilitada
+                        <text>Deshabilitado
                         <input type="submit" value="Habilitar" class="btn btn-link" />
                         </text>
                     }
