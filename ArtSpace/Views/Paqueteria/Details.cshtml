@@ -1,0 +1,85 @@
+﻿@model ArtSpace.Models.Paqueteria
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutEnvios.cshtml";
+}
+
+<br />
+<center>
+    <img src="~/resources/paqueteria.png" />
+    <h2>Detalles Paquetería</h2>
+</center>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd class="col-sm-3">
+            @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control", @readonly = "readonly" })
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.RFC)
+        </dt>
+
+        <dd class="col-sm-3">
+            @Html.TextBoxFor(model => model.RFC, new { @class = "form-control", @readonly = "readonly" })
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Tel)
+        </dt>
+
+        <dd class="col-sm-3">
+            @Html.TextBoxFor(model => model.Tel, new { @class = "form-control", @readonly = "readonly" })
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Web)
+        </dt>
+
+        <dd class="col-sm-3">
+            @Html.TextBoxFor(model => model.Web, new { @class = "form-control", @readonly = "readonly" })
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Direccion)
+        </dt>
+
+        <dd class="col-sm-3">
+            @Html.TextBoxFor(model => model.Direccion, new { @class = "form-control", @readonly = "readonly" })
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Contacto)
+        </dt>
+
+        <dd class="col-sm-3">
+            @Html.TextBoxFor(model => model.Contacto, new { @class = "form-control", @readonly = "readonly" })
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.telContacto)
+        </dt>
+
+        <dd class="col-sm-3">
+            @Html.TextBoxFor(model => model.telContacto, new { @class = "form-control", @readonly = "readonly" })
+        </dd>
+
+    </dl>
+</div>
+<br/>
+<center>
+    <div class="form-actions form-row">
+        <div class="col">
+            <input type="button" onclick="location.href='@Url.Action("Index", "Paqueteria")'" value="Regresar a lista" class="btn btn-info btn-lg" />
+        </div>
+        <div class="col">
+            @Html.ActionLink("Actualizar paquetería", "Edit", new { id = Model.Id }, new { @class = "btn btn-info btn-lg" })
+        </div>
+    </div>
+</center>
+<br />

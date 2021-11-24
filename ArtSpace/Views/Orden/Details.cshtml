@@ -1,0 +1,109 @@
+﻿@model ArtSpace.Models.Orden
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutEnvios.cshtml";
+}
+
+<br />
+<center>
+    <img src="~/resources/envio.png" />
+    <h2>Detalles del pedido</h2>
+</center>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.fecha_creacion)
+        </dt>
+
+        <dd class="col-sm-3">
+            @Html.TextBoxFor(model => model.fecha_creacion, new { @class = "form-control", @readonly = "readonly" })
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.num_confirmacion)
+        </dt>
+
+        <dd class="col-sm-3">
+            @Html.TextBoxFor(model => model.num_confirmacion, new { @class = "form-control", @readonly = "readonly" })
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.total)
+        </dt>
+
+        <dd class="col-sm-3">
+            @Html.TextBoxFor(model => model.total, new { @class = "form-control", @readonly = "readonly" })
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.id_cliente)
+        </dt>
+
+        <dd class="col-sm-3">
+            @Html.TextBoxFor(model => model.Cliente.nombre, new { @class = "form-control", @readonly = "readonly" })
+        </dd>
+
+
+        <dt class="col-sm-3">
+            @Html.DisplayName("Dirección de entrega")
+        </dt>
+
+        <dd class="col-sm-3">
+            <div class="form-control" style="width:280px; height:60px">
+                @Html.DisplayFor(model => model.dirEntrega.calle),
+                @Html.DisplayFor(model => model.dirEntrega.municipio),
+                @Html.DisplayFor(model => model.dirEntrega.estado),
+                @Html.DisplayFor(model => model.dirEntrega.codigo_postal)
+            </div>
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.id_paqueteria)
+        </dt>
+
+        <dd class="col-sm-3">
+            @Html.TextBoxFor(model => model.Paqueteria.Nombre, new { @class = "form-control", @readonly = "readonly" })
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.num_guia)
+        </dt>
+
+        <dd class="col-sm-3">
+            @Html.TextBoxFor(model => model.num_guia, new { @class = "form-control", @readonly = "readonly" })
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.fecha_envio)
+        </dt>
+
+        <dd class="col-sm-3">
+            @Html.TextBoxFor(model => model.fecha_envio, new { @class = "form-control", @readonly = "readonly" })
+        </dd>
+
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.fecha_entrega)
+        </dt>
+
+        <dd class="col-sm-3">
+            @Html.TextBoxFor(model => model.fecha_entrega, new { @class = "form-control", @readonly = "readonly" })
+        </dd>
+
+
+    </dl>
+</div>
+<br />
+<center>
+    <div class="form-actions form-row">
+        <div class="col">
+            <input type="button" onclick="location.href='@Url.Action("Index", "Orden")'" value="Regresar a lista" class="btn btn-info btn-lg" />
+        </div>
+        <div class="col">
+            @Html.ActionLink(" Actualizar ", "Pendiente", new { id = Model.Id }, new { @class = "btn btn-info btn-lg" })
+        </div>
+    </div>
+</center>
+<br />

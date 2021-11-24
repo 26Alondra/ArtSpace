@@ -1,0 +1,84 @@
+﻿@model ArtSpace.Models.Orden
+
+@{
+    ViewBag.Title = "Pendiente";
+    Layout = "~/Views/Shared/_LayoutEnvios.cshtml";
+}
+
+<br />
+<center>
+    <img src="~/resources/envio.png" />
+    <h2>Actualizar la fecha de envío, paquetería y número de guía</h2>
+</center>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <center>
+        <div class="form-horizontal w-75">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.fecha_creacion, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.TextBoxFor(model => model.fecha_creacion, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                @Html.LabelFor(model => model.num_confirmacion, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.TextBoxFor(model => model.num_confirmacion, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.total, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.TextBoxFor(model => model.total, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                @Html.LabelFor(model => model.id_cliente, "Nombre cliente", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.TextBoxFor(model => model.Cliente.nombre, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                @Html.Label("Dirección de entrega", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    <div class="form-control" style="width:280px; height:60px">
+                        @Html.DisplayFor(model => model.dirEntrega.calle),
+                        @Html.DisplayFor(model => model.dirEntrega.municipio),
+                        @Html.DisplayFor(model => model.dirEntrega.estado),
+                        @Html.DisplayFor(model => model.dirEntrega.codigo_postal)
+                    </div>
+                </div>
+                @Html.LabelFor(model => model.id_paqueteria, "Paquetería", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.DropDownList("id_paqueteria", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.id_paqueteria, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.num_guia, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.num_guia, new { htmlAttributes = new { @class = "form-control", placeholder = "Ingresa el número de guía" } })
+                    @Html.ValidationMessageFor(model => model.num_guia, "", new { @class = "text-danger" })
+                </div>
+                @Html.LabelFor(model => model.fecha_envio, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.TextBoxFor(model => model.fecha_envio, new { placeholder = "Ingresa la fecha de entrega", @type = "date", @class = "form-control datepicker" })
+                    @Html.ValidationMessageFor(model => model.fecha_envio, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col">
+                    <input type="button" onclick="location.href='@Url.Action("Index", "Orden")'" value="Regresar a lista" class="btn btn-info btn-lg" />
+                </div>
+                <div class="col">
+                    <input type="submit" value=" Actualizar " class="btn btn-info btn-lg" />
+                </div>
+            </div>
+        </div>
+    </center>
+}

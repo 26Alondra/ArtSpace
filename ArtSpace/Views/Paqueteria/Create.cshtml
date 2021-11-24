@@ -1,0 +1,83 @@
+﻿@model ArtSpace.Models.Paqueteria
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutEnvios.cshtml";
+}
+<br/>
+<center>
+    <img src="~/resources/paqueteria.png"/>
+    <h2>Crear Paquetería</h2>
+</center>
+
+@using (Html.BeginForm()) 
+{
+
+    @Html.AntiForgeryToken()
+    
+<center>
+    <div class="form-horizontal w-75">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group row">
+            @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control", placeholder = "Ingresa el nombre"} })
+                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(model => model.RFC, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.RFC, new { htmlAttributes = new { @class = "form-control", placeholder = "Ingresa el RFC" } })
+                @Html.ValidationMessageFor(model => model.RFC, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group row">
+            @Html.LabelFor(model => model.Tel, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.Tel, new { htmlAttributes = new { @class = "form-control", placeholder = "Ingresa el teléfono" } })
+                @Html.ValidationMessageFor(model => model.Tel, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(model => model.Web, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.Web, new { htmlAttributes = new { @class = "form-control", placeholder = "Ingresa el sitio web" } })
+                @Html.ValidationMessageFor(model => model.Web, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group row">
+            @Html.LabelFor(model => model.Direccion, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.Direccion, new { htmlAttributes = new { @class = "form-control", placeholder = "Ingresa la dirección" } })
+                @Html.ValidationMessageFor(model => model.Direccion, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(model => model.Contacto, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.Contacto, new { htmlAttributes = new { @class = "form-control", placeholder = "Ingresa el nombre del contacto" } })
+                @Html.ValidationMessageFor(model => model.Contacto, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group row">
+            @Html.LabelFor(model => model.telContacto, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.telContacto, new { htmlAttributes = new { @class = "form-control", placeholder = "Ingresa el teléfono del contacto" } })
+                @Html.ValidationMessageFor(model => model.telContacto, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+        <center>
+            <div class="form-row">
+                <div class="col">
+                    <input type="button" onclick="location.href='@Url.Action("Index", "Paqueteria")'" value="Regresar a lista" class="btn btn-info btn-lg" />
+                </div>
+                <div class="col">
+                    <input type="submit" value="Crear paquetería" class="btn btn-info btn-lg" />
+                </div>
+            </div>
+        </center>
+        <br/>
+    </div>
+</center>
+    }
+

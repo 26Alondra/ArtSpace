@@ -1,0 +1,189 @@
+﻿@model ArtSpace.Models.Orden
+
+@{
+    ViewBag.Title = "Enviados";
+    Layout = "~/Views/Shared/_LayoutEnvios.cshtml";
+}
+
+@{
+    string val;
+    if (Model.fecha_envio.HasValue)
+    {
+        val = Model.fecha_envio.GetValueOrDefault().ToShortDateString();
+    }
+    else
+    {
+        val = "";
+    }
+}
+
+<br />
+<center>
+    <img src="~/resources/envio.png" />
+    <h2>Actualizar la fecha de entrega</h2>
+</center>
+
+<script>
+    $(this).submit(function (event) {
+        event.preventDefault();
+        var fE;
+        var fN;
+        var nada = "";
+        var i = $('#@Html.IdFor(m => m.fecha_entrega)').val();
+        if (i != null) {
+            fT = i.split('-');
+            fE = fT[2] + "/" + fT[1] + "/" + fT[0];
+            var fechaEntrega = Date.parse(i);
+        }
+        else {
+            nada = "nada";
+            fE = "";
+        }
+        var fEnv = $('#@Html.IdFor(m => m.fecha_envio)').val();
+        fN = fEnv.split('/');
+        if (nada == "nada") {
+            $("#1").text("No ha seleccionado ninguna fecha de entrega");
+            $('#popupModel').modal('show');
+        }
+        else {
+            var fechaEnvio = Date.parse(fN[2] + '-' + fN[1] + '-' + fN[0]);
+            if (fechaEnvio > fechaEntrega) {
+                $("#1").text("La fecha de entrega " + fE + " no puede ser menor");
+                $("#2").text(" a la de envío " + fEnv);
+                $('#popupModel').modal('show');
+            }
+            else {
+                Save();
+            }
+        }
+    });
+
+    function Save() {
+        var token = $("[name='__RequestVerificationToken]'").val();
+
+        var ordenModel = {
+            Id: $('#@Html.IdFor(m=>m.Id)').val(),
+            fecha_creacion: $('#@Html.IdFor(m=>m.fecha_creacion)').val(),
+            num_confirmacion: $('#@Html.IdFor(m=>m.num_confirmacion)').val(),
+            total: $('#@Html.IdFor(m=>m.total)').val(),
+            id_cliente: $('#@Html.IdFor(m=>m.id_cliente)').val(),
+            id_dirEntrega: $('#@Html.IdFor(m=>m.id_cliente)').val(),
+            id_paqueteria: $('#@Html.IdFor(m=>m.id_paqueteria)').val(),
+            num_guia: $('#@Html.IdFor(m=>m.num_guia)').val(),
+            feha_envio: $('#@Html.IdFor(m=>m.fecha_envio)').val(),
+            fecha_entrega: $('#@Html.IdFor(m=>m.fecha_entrega)').val(),
+            Cliente: $('#@Html.IdFor(m=>m.Cliente)').val(),
+            dirEntrega: $('#@Html.IdFor(m=>m.dirEntrega)').val(),
+            Paqueteria: $('#@Html.IdFor(m=>m.Paqueteria)').val(),
+            
+            __RequestVerificationToken : token
+        }
+        $.ajax({
+            type: "post",
+            url: "/Orden/Enviados",
+            data: ordenModel,
+            async: false,
+            datatype: "json",
+            success: function (result) {
+                $('form').attr('action', 'Index1');
+                $('form').submit();
+            },
+            error: function (err, result) {
+                alert('No valid Data' + err.responseText);
+            }
+        });
+    }
+
+</script>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <center>
+        <div class="form-horizontal w-75">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.fecha_creacion, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.TextBoxFor(model => model.fecha_creacion, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                @Html.LabelFor(model => model.num_confirmacion, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.TextBoxFor(model => model.num_confirmacion, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.total, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.TextBoxFor(model => model.total, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                @Html.LabelFor(model => model.id_cliente, "Nombre cliente", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.TextBoxFor(model => model.Cliente.nombre, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                @Html.Label("Dirección de entrega", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    <div class="form-control" style="width:280px; height:60px">
+                        @Html.DisplayFor(model => model.dirEntrega.calle),
+                        @Html.DisplayFor(model => model.dirEntrega.municipio),
+                        @Html.DisplayFor(model => model.dirEntrega.estado),
+                        @Html.DisplayFor(model => model.dirEntrega.codigo_postal)
+                    </div>
+                </diV>
+                @Html.LabelFor(model => model.id_paqueteria, "Paquetería", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                        @Html.TextBoxFor(model => model.Paqueteria.Nombre, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.num_guia, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.TextBoxFor(model => model.num_guia, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                @Html.LabelFor(model => model.fecha_envio, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.TextBoxFor(model => model.fecha_envio, new { @class = "form-control", @Value = val, @readonly = "readonly" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.fecha_entrega, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.TextBoxFor(model => model.fecha_entrega, new { placeholder = "Ingresa la fecha de entrega", @type = "date", @class = "form-control datepicker" })
+                    @Html.ValidationMessageFor(model => model.fecha_entrega, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col">
+                    <input type="button" onclick="location.href='@Url.Action("Index2", "Orden")'" value="Regresar a lista" class="btn btn-info btn-lg" />
+                </div>
+                <div class="col">
+                    <input type="submit" value=" Actualizar " class="btn btn-info btn-lg" />
+                </div>
+            </div>
+        </div>
+    </center>
+}
+    <div id="popupModel" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Error en fecha</h3>
+                    <button type="button" class="close" data-dismiss="modal">X</button>
+                </div>
+                <div style="padding:5px">
+                    <div style="background-color:khaki; padding-left:15px">
+                        <span id="1"></span><span id="2"></span>
+                    </div>
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>
