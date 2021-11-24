@@ -1,0 +1,50 @@
+﻿@using ArtSpace.Models;
+@{
+    ViewBag.Title = "Carrito de compras";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<div class="container">
+    <h2 class="text-center">Carrito de compras</h2>
+    <table cellpadding="2" cellspacing="2" border="1" class="table table-info table-striped table-responsive">
+        <thead>
+            <tr>
+                <th>Imagen</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Cantidad</th>
+                <th>Precio</th>
+                <th>Eliminar</th>
+                <th>Sub Total</th>
+            </tr>
+        </thead>
+        @foreach (Item item in (List<Item>)Session["cart"])
+        {
+        <tr>
+            <td><img src="~/resources/productos/@item.Product.imagen" width="150px" height="150px" /></td>
+            <td><p class="text-center">@item.Product.nombre</p></td>
+            <td><p>@item.Product.descripcion</p></td>
+            <td><p class="text-center">@item.Cantidad</p></td>
+            <td><p class="text-center">@item.Product.precio</p></td>
+            <td><a href="@Url.Action("Quitar","Carro",new { id=item.Product.Id_producto})">Eliminar</a></td>
+            <td>@(item.Product.precio*item.Cantidad)</td>
+        </tr>
+        }
+        <tr>
+            <td align="right" colspan="6">Total:</td>
+            <td>
+                @{ 
+                    List < Item > cart = (List<Item>)Session["cart"];
+                    var Total = cart.Sum(item => item.Product.precio * item.Cantidad);
+                }
+                @Total
+            </td>
+        </tr>
+    </table>
+    <br />
+    <a class="btn btn-info" href="@Url.Action("Index","Home")">Continuar comprando</a>
+    <p style="float:right; color:white">
+        @Html.ActionLink("Confirmar orden","CrearOrden", "Pago", new { area =" "}, new { @class="btn btn-danger"})
+    </p>
+</div>
+

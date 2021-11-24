@@ -1,0 +1,32 @@
+﻿@using ArtSpace.Models;
+@{
+    ViewBag.Title = "Producto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<div class="container-sm">
+    @foreach (producto p in ViewBag.productoSeleccionado)
+    {
+   
+    <div class="row justify-content-center">
+        <div class="col-sm-6 text-center">
+            <img class="img-fluid rounded" src="~/resources/productos/@p.imagen" width="320px" height="320px"/>
+        </div>
+        <div class="col-sm-6 text-center">
+            <h3>@p.nombre</h3>
+            <h4>$@p.precio MX</h4>
+            <h5>Disponibilidad: @p.existencia</h5>
+            <p class=" text-justify">@p.descripcion</p>
+            <a href="@Url.Action("Agregar","Carro",new { id=p.Id_producto})" class="btn btn-outline-danger btn-block"><i class="fas fa-cart-plus"></i> Añadir al carrito</a>
+            <br />
+            <p class="text-left"><i class="fas fa-certificate"></i>Entrega de 2 a 3 días laborables.</p>
+            <p class="text-left"><i class="fas fa-certificate"></i>Garantía de la tienda oficial ArtSpace.</p>
+            <p class="text-left"><i class="fas fa-certificate"></i>Plazo de 30 días para hacer devoluciones sin coste alguno.</p>
+            <p class="text-left"><i class="fas fa-certificate"></i>Pieza única, fabricada artesanalmente por los artistas mexicanos.</p>
+            <p class="text-left"><i class="fas fa-certificate"></i>Métodos de pago: Visa, Mastercard, American Express,Paypal.</p>
+        </div>
+    </div>
+    }
+</div>
+

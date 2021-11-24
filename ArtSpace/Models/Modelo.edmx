@@ -1,0 +1,397 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ArtSpaceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="categoria">
+          <Key>
+            <PropertyRef Name="Id_categoria" />
+          </Key>
+          <Property Name="Id_categoria" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="nchar" MaxLength="50" />
+          <Property Name="descripcion" Type="text" />
+        </EntityType>
+        <EntityType Name="cliente">
+          <Key>
+            <PropertyRef Name="Id_cliente" />
+          </Key>
+          <Property Name="Id_cliente" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="nchar" MaxLength="50" />
+          <Property Name="email" Type="nchar" MaxLength="50" />
+          <Property Name="estado" Type="nchar" MaxLength="50" />
+          <Property Name="municipio" Type="nchar" MaxLength="50" />
+          <Property Name="calle" Type="nchar" MaxLength="50" />
+          <Property Name="colonia" Type="nchar" MaxLength="50" />
+          <Property Name="codigo_postal" Type="nchar" MaxLength="6" />
+        </EntityType>
+        <EntityType Name="dir_entrega">
+          <Key>
+            <PropertyRef Name="Id_dirEnt" />
+          </Key>
+          <Property Name="Id_dirEnt" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="estado" Type="nchar" MaxLength="50" />
+          <Property Name="municipio" Type="nchar" MaxLength="50" />
+          <Property Name="colonia" Type="nchar" MaxLength="50" />
+          <Property Name="calle" Type="nchar" MaxLength="50" />
+          <Property Name="codigo_postal" Type="nchar" MaxLength="10" />
+          <Property Name="tel" Type="int" />
+          <Property Name="id_cliente" Type="int" />
+        </EntityType>
+        <EntityType Name="metPago">
+          <Key>
+            <PropertyRef Name="Id_pago" />
+          </Key>
+          <Property Name="Id_pago" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="numero_tarjeta" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="fecha_vencimiento" Type="text" Nullable="false" />
+          <Property Name="id_cliente" Type="int" />
+        </EntityType>
+        <EntityType Name="producto">
+          <Key>
+            <PropertyRef Name="Id_producto" />
+          </Key>
+          <Property Name="Id_producto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nchar" MaxLength="50" />
+          <Property Name="descripcion" Type="text" />
+          <Property Name="precio" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ult_act" Type="date" />
+          <Property Name="imagen" Type="nchar" MaxLength="30" />
+          <Property Name="existencia" Type="int" />
+          <Property Name="stock" Type="int" />
+          <Property Name="id_subcategoria" Type="int" />
+        </EntityType>
+        <EntityType Name="subcategoria">
+          <Key>
+            <PropertyRef Name="Id_subcategoria" />
+          </Key>
+          <Property Name="Id_subcategoria" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="nchar" MaxLength="50" />
+          <Property Name="descripcion" Type="text" />
+          <Property Name="id_categoria" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__dir_entre__id_cl__14270015">
+          <End Role="cliente" Type="Self.cliente" Multiplicity="0..1" />
+          <End Role="dir_entrega" Type="Self.dir_entrega" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cliente">
+              <PropertyRef Name="Id_cliente" />
+            </Principal>
+            <Dependent Role="dir_entrega">
+              <PropertyRef Name="id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__metPago__id_clie__151B244E">
+          <End Role="cliente" Type="Self.cliente" Multiplicity="0..1" />
+          <End Role="metPago" Type="Self.metPago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cliente">
+              <PropertyRef Name="Id_cliente" />
+            </Principal>
+            <Dependent Role="metPago">
+              <PropertyRef Name="id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__producto__id_sub__4AB81AF0">
+          <End Role="subcategoria" Type="Self.subcategoria" Multiplicity="0..1" />
+          <End Role="producto" Type="Self.producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="subcategoria">
+              <PropertyRef Name="Id_subcategoria" />
+            </Principal>
+            <Dependent Role="producto">
+              <PropertyRef Name="id_subcategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__subcatego__id_ca__33D4B598">
+          <End Role="categoria" Type="Self.categoria" Multiplicity="1" />
+          <End Role="subcategoria" Type="Self.subcategoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categoria">
+              <PropertyRef Name="Id_categoria" />
+            </Principal>
+            <Dependent Role="subcategoria">
+              <PropertyRef Name="id_categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ArtSpaceModelStoreContainer">
+          <EntitySet Name="categoria" EntityType="Self.categoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cliente" EntityType="Self.cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dir_entrega" EntityType="Self.dir_entrega" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="metPago" EntityType="Self.metPago" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="producto" EntityType="Self.producto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="subcategoria" EntityType="Self.subcategoria" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__dir_entre__id_cl__14270015" Association="Self.FK__dir_entre__id_cl__14270015">
+            <End Role="cliente" EntitySet="cliente" />
+            <End Role="dir_entrega" EntitySet="dir_entrega" />
+          </AssociationSet>
+          <AssociationSet Name="FK__metPago__id_clie__151B244E" Association="Self.FK__metPago__id_clie__151B244E">
+            <End Role="cliente" EntitySet="cliente" />
+            <End Role="metPago" EntitySet="metPago" />
+          </AssociationSet>
+          <AssociationSet Name="FK__producto__id_sub__4AB81AF0" Association="Self.FK__producto__id_sub__4AB81AF0">
+            <End Role="subcategoria" EntitySet="subcategoria" />
+            <End Role="producto" EntitySet="producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__subcatego__id_ca__33D4B598" Association="Self.FK__subcatego__id_ca__33D4B598">
+            <End Role="categoria" EntitySet="categoria" />
+            <End Role="subcategoria" EntitySet="subcategoria" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ArtSpaceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="categoria">
+          <Key>
+            <PropertyRef Name="Id_categoria" />
+          </Key>
+          <Property Name="Id_categoria" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="subcategoria" Relationship="Self.FK__subcatego__id_ca__33D4B598" FromRole="categoria" ToRole="subcategoria" />
+        </EntityType>
+        <EntityType Name="subcategoria">
+          <Key>
+            <PropertyRef Name="Id_subcategoria" />
+          </Key>
+          <Property Name="Id_subcategoria" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="id_categoria" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="categoria" Relationship="Self.FK__subcatego__id_ca__33D4B598" FromRole="subcategoria" ToRole="categoria" />
+          <NavigationProperty Name="producto" Relationship="ArtSpaceModel.FK__producto__id_sub__4AB81AF0" FromRole="subcategoria" ToRole="producto" />
+        </EntityType>
+        <Association Name="FK__subcatego__id_ca__33D4B598">
+          <End Role="categoria" Type="Self.categoria" Multiplicity="1" />
+          <End Role="subcategoria" Type="Self.subcategoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categoria">
+              <PropertyRef Name="Id_categoria" />
+            </Principal>
+            <Dependent Role="subcategoria">
+              <PropertyRef Name="id_categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="contextArtSpace" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="categoria" EntityType="Self.categoria" />
+          <EntitySet Name="subcategoria" EntityType="Self.subcategoria" />
+          <AssociationSet Name="FK__subcatego__id_ca__33D4B598" Association="Self.FK__subcatego__id_ca__33D4B598">
+            <End Role="categoria" EntitySet="categoria" />
+            <End Role="subcategoria" EntitySet="subcategoria" />
+          </AssociationSet>
+          <EntitySet Name="producto" EntityType="ArtSpaceModel.producto" />
+          <AssociationSet Name="FK__producto__id_sub__4AB81AF0" Association="ArtSpaceModel.FK__producto__id_sub__4AB81AF0">
+            <End Role="subcategoria" EntitySet="subcategoria" />
+            <End Role="producto" EntitySet="producto" />
+          </AssociationSet>
+          <EntitySet Name="cliente" EntityType="ArtSpaceModel.cliente" />
+          <EntitySet Name="dir_entrega" EntityType="ArtSpaceModel.dir_entrega" />
+          <EntitySet Name="metPago" EntityType="ArtSpaceModel.metPago" />
+          <AssociationSet Name="FK__dir_entre__id_cl__03F0984C" Association="ArtSpaceModel.FK__dir_entre__id_cl__03F0984C">
+            <End Role="cliente" EntitySet="cliente" />
+            <End Role="dir_entrega" EntitySet="dir_entrega" />
+          </AssociationSet>
+          <AssociationSet Name="FK__metPago__id_clie__02FC7413" Association="ArtSpaceModel.FK__metPago__id_clie__02FC7413">
+            <End Role="cliente" EntitySet="cliente" />
+            <End Role="metPago" EntitySet="metPago" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="producto">
+          <Key>
+            <PropertyRef Name="Id_producto" />
+          </Key>
+          <Property Name="Id_producto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="precio" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ult_act" Type="DateTime" Precision="0" />
+          <Property Name="imagen" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="existencia" Type="Int32" />
+          <Property Name="stock" Type="Int32" />
+          <Property Name="id_subcategoria" Type="Int32" />
+          <NavigationProperty Name="subcategoria" Relationship="ArtSpaceModel.FK__producto__id_sub__4AB81AF0" FromRole="producto" ToRole="subcategoria" />
+        </EntityType>
+        <Association Name="FK__producto__id_sub__4AB81AF0">
+          <End Type="ArtSpaceModel.subcategoria" Role="subcategoria" Multiplicity="0..1" />
+          <End Type="ArtSpaceModel.producto" Role="producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="subcategoria">
+              <PropertyRef Name="Id_subcategoria" />
+            </Principal>
+            <Dependent Role="producto">
+              <PropertyRef Name="id_subcategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="cliente">
+          <Key>
+            <PropertyRef Name="Id_cliente" />
+          </Key>
+          <Property Name="Id_cliente" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="estado" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="municipio" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="calle" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="colonia" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="codigo_postal" Type="String" MaxLength="6" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="dir_entrega" Relationship="ArtSpaceModel.FK__dir_entre__id_cl__03F0984C" FromRole="cliente" ToRole="dir_entrega" />
+          <NavigationProperty Name="metPago" Relationship="ArtSpaceModel.FK__metPago__id_clie__02FC7413" FromRole="cliente" ToRole="metPago" />
+        </EntityType>
+        <EntityType Name="dir_entrega">
+          <Key>
+            <PropertyRef Name="Id_dirEnt" />
+          </Key>
+          <Property Name="Id_dirEnt" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="estado" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="municipio" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="colonia" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="calle" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="codigo_postal" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="tel" Type="Int32" />
+          <Property Name="id_cliente" Type="Int32" />
+          <NavigationProperty Name="cliente" Relationship="ArtSpaceModel.FK__dir_entre__id_cl__03F0984C" FromRole="dir_entrega" ToRole="cliente" />
+        </EntityType>
+        <EntityType Name="metPago">
+          <Key>
+            <PropertyRef Name="Id_pago" />
+          </Key>
+          <Property Name="Id_pago" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="numero_tarjeta" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="fecha_vencimiento" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="id_cliente" Type="Int32" />
+          <NavigationProperty Name="cliente" Relationship="ArtSpaceModel.FK__metPago__id_clie__02FC7413" FromRole="metPago" ToRole="cliente" />
+        </EntityType>
+        <Association Name="FK__dir_entre__id_cl__03F0984C">
+          <End Type="ArtSpaceModel.cliente" Role="cliente" Multiplicity="0..1" />
+          <End Type="ArtSpaceModel.dir_entrega" Role="dir_entrega" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cliente">
+              <PropertyRef Name="Id_cliente" />
+            </Principal>
+            <Dependent Role="dir_entrega">
+              <PropertyRef Name="id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__metPago__id_clie__02FC7413">
+          <End Type="ArtSpaceModel.cliente" Role="cliente" Multiplicity="0..1" />
+          <End Type="ArtSpaceModel.metPago" Role="metPago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cliente">
+              <PropertyRef Name="Id_cliente" />
+            </Principal>
+            <Dependent Role="metPago">
+              <PropertyRef Name="id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ArtSpaceModelStoreContainer" CdmEntityContainer="contextArtSpace">
+          <EntitySetMapping Name="categoria">
+            <EntityTypeMapping TypeName="ArtSpaceModel.categoria">
+              <MappingFragment StoreEntitySet="categoria">
+                <ScalarProperty Name="Id_categoria" ColumnName="Id_categoria" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="subcategoria">
+            <EntityTypeMapping TypeName="ArtSpaceModel.subcategoria">
+              <MappingFragment StoreEntitySet="subcategoria">
+                <ScalarProperty Name="Id_subcategoria" ColumnName="Id_subcategoria" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="producto">
+            <EntityTypeMapping TypeName="ArtSpaceModel.producto">
+              <MappingFragment StoreEntitySet="producto">
+                <ScalarProperty Name="id_subcategoria" ColumnName="id_subcategoria" />
+                <ScalarProperty Name="stock" ColumnName="stock" />
+                <ScalarProperty Name="existencia" ColumnName="existencia" />
+                <ScalarProperty Name="imagen" ColumnName="imagen" />
+                <ScalarProperty Name="ult_act" ColumnName="ult_act" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="Id_producto" ColumnName="Id_producto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cliente">
+            <EntityTypeMapping TypeName="ArtSpaceModel.cliente">
+              <MappingFragment StoreEntitySet="cliente">
+                <ScalarProperty Name="codigo_postal" ColumnName="codigo_postal" />
+                <ScalarProperty Name="colonia" ColumnName="colonia" />
+                <ScalarProperty Name="calle" ColumnName="calle" />
+                <ScalarProperty Name="municipio" ColumnName="municipio" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="Id_cliente" ColumnName="Id_cliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dir_entrega">
+            <EntityTypeMapping TypeName="ArtSpaceModel.dir_entrega">
+              <MappingFragment StoreEntitySet="dir_entrega">
+                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="codigo_postal" ColumnName="codigo_postal" />
+                <ScalarProperty Name="calle" ColumnName="calle" />
+                <ScalarProperty Name="colonia" ColumnName="colonia" />
+                <ScalarProperty Name="municipio" ColumnName="municipio" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="Id_dirEnt" ColumnName="Id_dirEnt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="metPago">
+            <EntityTypeMapping TypeName="ArtSpaceModel.metPago">
+              <MappingFragment StoreEntitySet="metPago">
+                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+                <ScalarProperty Name="fecha_vencimiento" ColumnName="fecha_vencimiento" />
+                <ScalarProperty Name="numero_tarjeta" ColumnName="numero_tarjeta" />
+                <ScalarProperty Name="Id_pago" ColumnName="Id_pago" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

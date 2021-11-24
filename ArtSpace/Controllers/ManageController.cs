@@ -333,7 +333,7 @@ namespace ArtSpace.Controllers
             base.Dispose(disposing);
         }
 
-#region Aplicaciones auxiliares
+#region Asistentes
         // Se usan para protección XSRF al agregar inicios de sesión externos
         private const string XsrfKey = "XsrfId";
 

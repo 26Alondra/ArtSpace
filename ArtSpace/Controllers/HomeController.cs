@@ -10,6 +10,8 @@ namespace ArtSpace.Controllers
     {
         public ActionResult Index()
         {
+            if (Session["ItemTotal"] == null)
+                Session["ItemTotal"] = 0;
             return View();
         }
 

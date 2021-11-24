@@ -125,3 +125,7 @@ D:\VisualProjects\ArtSpace\obj\Debug\ArtSpace.csproj.CoreCompileInputs.cache
 D:\VisualProjects\ArtSpace\obj\Debug\ArtSpace.csproj.CopyComplete
 D:\VisualProjects\ArtSpace\obj\Debug\ArtSpace.dll
 D:\VisualProjects\ArtSpace\obj\Debug\ArtSpace.pdb
+C:\Users\holas\Source\Repos\ArtSpace\ArtSpace\obj\Debug\ArtSpace.csprojAssemblyReference.cache
+C:\Users\holas\Source\Repos\ArtSpace\ArtSpace\obj\Debug\ArtSpace.csproj.CoreCompileInputs.cache
+C:\Users\holas\Source\Repos\ArtSpace\ArtSpace\obj\Debug\ArtSpace.dll
+C:\Users\holas\Source\Repos\ArtSpace\ArtSpace\obj\Debug\ArtSpace.pdb

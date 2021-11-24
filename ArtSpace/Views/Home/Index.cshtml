@@ -1,88 +1,84 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Inicio";
 }
 
-    <div id="demo" class="carousel slide" data-ride="carousel">
+<div id="indexcarousel" class="carousel slide" data-ride="carousel">
 
-        <!-- Indicators -->
-        <ul class="carousel-indicators">
-            <li data-target="#demo" data-slide-to="0" class="active"></li>
-            <li data-target="#demo" data-slide-to="1"></li>
-            <li data-target="#demo" data-slide-to="2"></li>
-        </ul>
+    <ul class="carousel-indicators">
+        <li data-target="#indexcarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#indexcarousel" data-slide-to="1"></li>
+        <li data-target="#indexcarousel" data-slide-to="2"></li>
+    </ul>
 
-        <!-- The slideshow -->
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="~/resources/escultura2.jpg" class="img-fluid" />
-            </div>
-            <div class="carousel-item">
-                <img src="~/resources/escultura3.jpg" class="img-fluid" />
-            </div>
-            <div class="carousel-item">
-                <img src="~/resources/escultura1.png" class="img-fluid" />
-            </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="~/resources/escultura2.jpg" class="img-fluid" height="300px" />
         </div>
-
-        <!-- Left and right controls -->
-        <a class="carousel-control-prev" href="#demo" data-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-        </a>
-        <a class="carousel-control-next" href="#demo" data-slide="next">
-            <span class="carousel-control-next-icon"></span>
-        </a>
+        <div class="carousel-item">
+            <img src="~/resources/escultura3.jpg" class="img-fluid" height="300px" />
+        </div>
+        <div class="carousel-item">
+            <img src="~/resources/escultura1.png" class="img-fluid" height="300px" />
+        </div>
     </div>
-    <br />
-    <br />
-    <br />
-    <br />
-<h2 class="text-center">Nuestas esculturas más vendidas</h2>
+
+    <a class="carousel-control-prev" href="#indexcarousel" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#indexcarousel" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </a>
+</div>
+<br />
+<br />
+<div class="container">
+    <h2 class="text-center">Nuestas esculturas más vendidas</h2>
     <div class="container">
         <div class="container-fluid">
-            <div class="card-deck">
+            <div class="card-deck" data-href="https://www.google.com/">
                 <div class="card m-3">
                     <div class="card-body">
-                        <img class="card-img-top" src="~/resources/fox.jpg" />
-                        <h5 class="card-title text-center">World Fox 3D</h5>
-                        <h6 class="card-subtitle mb-2 text-muted text-center">Madera</h6>
-                        <p class="card-text text-center">Precio:$350.00</p>
+                        <img class="card-img-top" src="~/resources/productos/venado.jpg" />
+                        <h5 class="card-title text-center">Tsamaikita</h5>
+                        <h6 class="card-subtitle mb-2 text-muted text-center">Disponibles: 10</h6>
+                        <p class="card-text text-center">Precio: $50000.00</p>
                         <div class="card-footer text-center">
-                            <a href="#" class="btn btn-danger btn-primary">Comprar ahora</a>
+                            <a href="@Url.Action("verProducto","Catalogo",new { idProducto=4})" class="btn btn-danger btn-block" style="margin-bottom:5px;">Ver producto</a>
+                            <a href="@Url.Action("Agregar","Carro",new { id=4})" class="btn btn-outline-danger btn-block"><i class="fas fa-cart-plus"></i> Añadir al carrito</a>
                         </div>
                     </div>
                 </div>
                 <div class="card m-3">
                     <div class="card-body">
-                        <img class="card-img-top" src="~/resources/Tsamaikitajpg.jpg" />
-                        <h5 class="card-title text-center">Escultura Arte Huichol - Tsamaikita</h5>
-                        <h6 class="card-subtitle mb-2 text-muted text-center">Madera</h6>
-                        <p class="card-text text-center"><del class="text-danger">Antes:$900</del></p>
-                        <p class="card-text text-center">Ahora:$550.00</p>
+                        <img class="card-img-top" src="~/resources/productos/durga.jpg" />
+                        <h5 class="card-title text-center">Escultura Diosa Durga</h5>
+                        <h6 class="card-subtitle mb-2 text-muted text-center">Disponibles: 9</h6>
+                        <p class="card-text text-center">Precio: $319309.00</p>
                         <div class="card-footer text-center">
-                            <a href="#" class="btn btn-danger btn-primary">Comprar ahora</a>
+                            <a href="@Url.Action("verProducto","Catalogo",new { idProducto=1009})" class="btn btn-danger btn-block" style="margin-bottom:5px;">Ver producto</a>
+                            <a href="@Url.Action("Agregar","Carro",new { id=1009})" class="btn btn-outline-danger btn-block"><i class="fas fa-cart-plus"></i> Añadir al carrito</a>
                         </div>
                     </div>
                 </div>
                 <div class="card m-3">
                     <div class="card-body">
-                        <img class="card-img-top" src="~/resources/dog.jpg" />
-                        <h5 class="card-title text-center">Balloon Dog</h5>
-                        <h6 class="card-subtitle mb-2 text-muted text-center">Metal</h6>
-                        <p class="card-text text-center">Precio:$809.99</p>
+                        <img class="card-img-top" src="~/resources/productos/camaleon.jpg"/>
+                        <h5 class="card-title text-center">Camaleón</h5>
+                        <h6 class="card-subtitle mb-2 text-muted text-center">Disponibles: Disponibles: </h6>
+                        <p class="card-text text-center">Precio:$16500.00</p>
                         <div class="card-footer text-center">
-                            <a href="#" class="btn btn-danger btn-primary">Comprar ahora</a>
+                            <a href="@Url.Action("verProducto","Catalogo",new { idProducto=6})" class="btn btn-danger btn-block" style="margin-bottom:5px;">Ver producto</a>
+                            <a href="@Url.Action("Agregar","Carro",new { id=6})" class="btn btn-outline-danger btn-block"><i class="fas fa-cart-plus"></i> Añadir al carrito</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <br />
-        <br />
         <br />
         <br />
         <div class="row">
-            <div class="col-sm">
-                <h3 class="font-italic">Más que una escultura.</h3>
+            <div class="col-sm-6">
+                <h2 class="font-italic text-center">Más que una escultura.</h2>
                 <br />
                 <p class="text-justify font-italic">
                     La escultura no es una ciencia sino un arte totalmente mecánico, que provoca sudor y fatiga corporal en su realizador…
@@ -94,65 +90,93 @@
                 </p>
                 <p class="text-lg-left">- Leonardo da Vinci</p>
             </div>
-            <div class="col-sm">
-                <img src="~/resources/leo.png" class="img-fluid rounded mx-auto d-block" />
+            <div class="col-sm-6 text-center">
+                <img src="~/resources/redentor.jpg" class="img-fluid rounded" width="150px" height="500px" />
+                <img src="~/resources/david.jpg" class="img-fluid rounded" width="150px" height="450px" />
             </div>
         </div>
-        <br />
-        <br />
-        <br />
-        <br />
-        <div class="row">
-            <div class="col-sm">
-                <img src="~/resources/about.jpg" class="img-fluid rounded mx-auto d-block" />
-            </div>
-            <div class="col-sm">
-                <h3>¿Quiénes somos?</h3>
-                <br />
-                <p>
-                    ArtSpace es una tienda online donde puedes comprar esculturas originales.
-                    Nuestro objetivo es hacer el arte accesible a todo el mundo y ofrecer una rigurosa selección de artículos de calidad.
-                </p>
-            </div>
-        </div>
-        <br />
-        <br />
-        <br />
+        <br id="acerca" />
         <br />
         <div class="row">
             <div class="col-sm-6">
-                <h3>Ponte en contacto con nosotros:</h3>
+                <div class="row">
+                    <img src="~/resources/arte.jpg" class="img-fluid rounded mx-auto d-block" width="100%" height="50px" />
+                </div>
                 <br />
-                <table class="table table-borderless">
-                    <tbody>
-                        <tr>
-                            <td>
-                                <div style="text-align:left; font-family:'Times New Roman'">
+                <div class="row">
+                    <img src="~/resources/religiosa.jpg" class="img-fluid rounded mx-auto d-block" />
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <h2 class="text-center">¿Quiénes somos?</h2>
+                <br />
+                <p class="text-justify">
+                    ArtSpace es una tienda online donde puedes comprar esculturas originales.
+                    Nuestro objetivo es hacer el arte accesible a todo el mundo y ofrecer una rigurosa selección de artículos de calidad,
+                    con criterios objetivos y transparentes que unifica el placer de disfrutar del arte con la propia inversión.
+                </p>
+            </div>
+        </div>
+        <br id="contacto" />
+        <br />
+        <h2 class="text-center">¿Tienes alguna duda?</h2>
+        <h3 class="text-center">Ponte en contacto con nosotros:</h3>
+        <br />
+        <table class="table table-borderless">
+            <tbody>
+                <tr>
+                    <td>
+                        <div style="text-align:left; font-family:Arial">
+                            <div class="row">
+                                <diV class="col-sm-6">
                                     <div class="form-group">
                                         <label for="usr" class="font-weight-normal">Nombre:</label>
                                         <input type="text" class="form-control" id="usr">
                                     </div>
+                                </diV>
+                                <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="phone" class="font-weight-normal">Teléfono:</label>
-                                        <input type="number" class="form-control" id="pwd">
+                                        <label for="lastname" class="font-weight-normal">Apellido:</label>
+                                        <input type="text" class="form-control" id="pwd">
                                     </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="email" class="font-weight-normal">Correo:</label>
                                         <input type="email" class="form-control" id="pwd">
                                     </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="phone" class="font-weight-normal">Teléfono:</label>
+                                        <input type="number" class="form-control" id="pwd">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
                                     <div class="form-group font-weight-normal">
                                         <label for="comment">Comentario:</label>
                                         <textarea class="form-control" rows="5" id="comment"></textarea>
                                     </div>
-                                    <button type="button" class="btn btn-outline-dark">Enviar</button>
                                 </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="col-sm-6 mx-auto">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15066.300273461913!2d-99.5777927!3d19.2573425!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x50062df6247fdfb3!2sInstituto%20Tecnol%C3%B3gico%20de%20Toluca!5e0!3m2!1ses!2smx!4v1633763700189!5m2!1ses!2smx" width="506" height="506" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-            </div>
-        </div>
+                            </div>
+                            <div class="form-row text-center">
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary">Enviar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
+    <br />
+    <br />
+    <h2 class="text-center">O si bien lo deseas, puedes encontrarnos en la siguiente dirección:</h2>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15066.300273461913!2d-99.5777927!3d19.2573425!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x50062df6247fdfb3!2sInstituto%20Tecnol%C3%B3gico%20de%20Toluca!5e0!3m2!1ses!2smx!4v1633763700189!5m2!1ses!2smx" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+</div>
+

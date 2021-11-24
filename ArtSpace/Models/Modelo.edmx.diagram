@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ca64960d46c247c8995c185af9dd7ca5" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="ArtSpaceModel.categoria" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ArtSpaceModel.subcategoria" Width="1.5" PointX="3.125" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="ArtSpaceModel.FK__subcatego__id_ca__33D4B598" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ArtSpaceModel.producto" Width="1.5" PointX="5.5" PointY="3.125" />
+        <AssociationConnector Association="ArtSpaceModel.FK__producto__id_sub__4AB81AF0" />
+        <EntityTypeShape EntityType="ArtSpaceModel.cliente" Width="1.5" PointX="7.75" PointY="3.25" />
+        <EntityTypeShape EntityType="ArtSpaceModel.dir_entrega" Width="1.5" PointX="10" PointY="2" />
+        <EntityTypeShape EntityType="ArtSpaceModel.metPago" Width="1.5" PointX="10" PointY="5.5" />
+        <AssociationConnector Association="ArtSpaceModel.FK__dir_entre__id_cl__03F0984C" />
+        <AssociationConnector Association="ArtSpaceModel.FK__metPago__id_clie__02FC7413" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,66 @@
+﻿@using ArtSpace.Models;
+@{
+    ViewBag.Title = @ViewBag.Catego;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .card:hover {
+        box-shadow: -1px 9px 40px -12px #808080;
+    }
+</style>
+<br />
+<div class="container">
+    <h2 class="text-center">@ViewBag.Catego</h2>
+        <div class="row">
+            <div class="col-xl-12 col-md-9">
+                <div class="dropdown float-right">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                        Filtar por subcategoría:
+                    </button>
+                    <div class="dropdown-menu">
+                        @foreach (subcategoria sub in ViewBag.subcategoria)
+                        {
+                            @Html.ActionLink(@sub.nombre, "prodSubcategoria", "Catalogo", new { idsubcatego=sub.Id_subcategoria, idCategoria= sub.id_categoria, nomSubCatego = sub.nombre}, new { @class = "dropdown-item" })
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    <br />
+    <div class="col-xl-12 col-md-9">
+        <div class="row justify-content-center">
+            @foreach (producto item in ViewBag.productos)
+            {
+                <div class="card" style="width:250px; margin:10px;">
+                    <div class="card-body">
+                        <img class="card-img-top" src="~/resources/productos/@item.imagen" />
+                        <h5 class="card-title text-center">@item.nombre</h5>
+                        <h6 class="card-subtitle mb-2 text-muted text-center">Disponibles: @item.existencia</h6>
+                        <p class="card-text text-center">Precio:$@item.precio</p>
+                        <div class="card-footer text-center">
+                            <a href="@Url.Action("verProducto","Catalogo",new { idProducto=item.Id_producto})" class="btn btn-danger btn-block" style="margin-bottom:5px;">Ver producto</a>
+                            <a href="@Url.Action("Agregar","Carro",new { id=item.Id_producto})" class="btn btn-outline-danger btn-block"><i class="fas fa-cart-plus"></i> Añadir al carrito</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $('.card').hover(
+        function() {
+            $(this).animate({
+                marginTop: "-=1%",
+                marginButtom: "+=1%"
+            },200)
+        },
+        function () {
+            $(this).animate({
+                marginTop: "+=1%",
+                marginButtom: "-=1%"
+            })
+        }
+    )
+</script>
+

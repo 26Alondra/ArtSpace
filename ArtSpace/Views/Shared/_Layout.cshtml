@@ -4,25 +4,28 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/712575d4a5.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/estilos.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.8.3.js"></script>
-    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
-    @Styles.Render("~/Content/css")
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <title>@ViewBag.Title - ArtSpace</title>
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
 <body>
-    <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+    <br />
+    <br />
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top " >
         @Html.ActionLink("ArtSpace", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-        <!-- Toggler/collapsibe Button -->
+       
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <!-- Navbar links -->
-        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        
+        <div class="collapse navbar-collapse " id="collapsibleNavbar">
             <ul class="navbar-nav">
                 <li>@Html.ActionLink("Inicio", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                 <li class="nav-item dropdown">
@@ -30,14 +33,14 @@
                         Esculturas
                     </a>
                     <div class="dropdown-menu">
-                        @Html.ActionLink("Religiosas", "About", "Home", new { area = "" }, new { @class = "dropdown-item" })
-                        @Html.ActionLink("Abstractas", "About", "Home", new { area = "" }, new { @class = "dropdown-item" })
-                        @Html.ActionLink("Profanas", "About", "Home", new { area = "" }, new { @class = "dropdown-item" })
-                        @Html.ActionLink("Realistas", "About", "Home", new { area = "" }, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Religiosas", "prodCategoria", "Catalogo", new { idCat = 1 }, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Abstractas", "prodCategoria", "Catalogo", new { idCat = 2 }, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Profanas", "prodCategoria", "Catalogo", new { idCat = 3 }, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Realistas", "prodCategoria", "Catalogo", new { idCat = 4 }, new { @class = "dropdown-item" })
                     </div>
                 </li>
-                <li>@Html.ActionLink("Acerca de", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                <li>@Html.ActionLink("Contacto", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                <li><a class="nav-link" href="#acerca">Acerca de</a></li>
+                <li><a class="nav-link" href="#contacto">Contacto</a></li>
             </ul>
             @Html.Partial("_LoginPartial", new { @class = "nav-link" })
         </div>
@@ -46,7 +49,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
+            <p class="text-center">&copy; @DateTime.Now.Year - ArtSpace</p>
         </footer>
     </div>
     @Scripts.Render("~/bundles/jquery")

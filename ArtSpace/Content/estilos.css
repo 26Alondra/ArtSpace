@@ -1,0 +1,40 @@
+﻿.buscar {
+    position: fixed;
+    padding: 5px;
+    top: 75px;
+    right: 10px;
+}
+
+    .buscar input {
+        width: 0px;
+        height: 40px;
+        padding: 0 20px;
+        font-size: 18px;
+        color: #212529;
+        outline: none;
+        border: 1px solid #212529;
+        border-radius: 30px;
+        transition: all 0.6s ease;
+    }
+
+.boton {
+    position: fixed;
+    top: 70px;
+    right: 10px;
+    width: 55px;
+    height: 60px;
+    line-height: 55px;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.buscar:hover input {
+    width: 240px;
+}
+
+.buscar input:focus {
+    width: 240px;
+}
